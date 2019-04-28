@@ -10,8 +10,6 @@ export default class AddPantryItem extends React.Component {
         <TextInput
           style={styles.textInput}
           onChangeText={(e) => this.props.update}
-
-          // onChangeText={(text) => this.setState({text})}
           value={this.props.itemName}
         />
         <CheckBox

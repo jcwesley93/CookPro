@@ -1,18 +1,77 @@
 import React from 'react';
-import styles from '../stylesheet'
-import AddPantryItem from '../components/AddPantryItem'
-import { ScrollView, Text, View, Button} from 'react-native';
+import styles from '../stylesheet';
+import AddPantryItem from '../components/AddPantryItem';
+import ListPantryItems from '../components/ListPantryItems';
+import { ScrollView, Text, View, Button, FlatList } from 'react-native';
+
+const pantry = [
+  {
+      name: 'Apple',
+      priority: true
+  },
+  {
+      name: 'Spinach',
+      priority: true
+  },
+  {
+      name: 'Olive Oil',
+      priority: false
+  },
+  {
+      name: 'Beans',
+      priority: false
+  },
+  {
+      name: 'Bread',
+      priority: true
+  },
+  {
+      name: 'Bananas',
+      priority: true
+  },
+  {
+      name: 'Tomatos',
+      priority: true
+  },
+  {
+      name: 'Chicken Broth',
+      priority: false
+  },
+  {
+      name: 'Peppers',
+      priority: true
+  },
+  {
+      name: 'Parmesan',
+      priority: true
+  },
+  {
+      name:'Mozzarella',
+      priority: true
+  },
+  {
+      name:'Chicken',
+      priority: true
+  },
+  {
+      name:'Tomatoes',
+      priority: true
+  },
+
+];
 
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemName: 'HI',
+      items: [...pantry],
+      itemName: '',
       check: false
     }
     this.togglePriority = this.togglePriority.bind(this);
     this.updateItemName = this.updateItemName.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
 
   updateItemName = (text) => {
@@ -25,9 +84,9 @@ export default class HomeScreen extends React.Component {
     })
   }
 
-  // addItem = (item) => {
+  addItem = (item) => {
 
-  // }
+  }
 
   static navigationOptions = {
     title: 'PantryDJ',
@@ -59,13 +118,9 @@ export default class HomeScreen extends React.Component {
           </Button>
         </View>
 
-        <AddPantryItem update={this.updateItemName} toggle={this.togglePriority} check={this.state.check}/>
-
-        {/* <View>
-          <FlatList
-            data={[{key: 'a'}, {key: 'b'}]}
-            renderItem={({item}) => <Text>{item.key}</Text>}/>
-        </View> */}
+        <AddPantryItem update={this.updateItemName} toggle={this.togglePriority} check={this.state.check} itemName={this.state.itemName}/>
+      
+        <ListPantryItems data={this.state.items}/>
 
         <View style={styles.navBar}>
           <Button 
