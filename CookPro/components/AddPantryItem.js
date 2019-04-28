@@ -8,10 +8,11 @@ export default class AddPantryItem extends React.Component {
     return (
       <View style={[styles.displayChildrenInline, styles.greyBackground]}>
         <TextInput
-          style={styles.minHeight}
           style={styles.textInput}
-          onChangeText={() => this.props.update()}
-          // value={this.props.text}
+          onChangeText={(e) => this.props.update}
+
+          // onChangeText={(text) => this.setState({text})}
+          value={this.props.itemName}
         />
         <CheckBox
           value={this.props.check}

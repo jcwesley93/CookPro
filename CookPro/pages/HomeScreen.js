@@ -8,7 +8,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemName: '',
+      itemName: 'HI',
       check: false
     }
     this.togglePriority = this.togglePriority.bind(this);
@@ -21,9 +21,13 @@ export default class HomeScreen extends React.Component {
 
   togglePriority = () => {
     this.setState({
-      check : !this.state.check
+      check: !this.state.check
     })
   }
+
+  // addItem = (item) => {
+
+  // }
 
   static navigationOptions = {
     title: 'PantryDJ',
